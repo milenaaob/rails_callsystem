@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Origem:</strong>
+  <%= @call.origem %>
+</p>
+
+<p>
+  <strong>Destino:</strong>
+  <%= @call.destino %>
+</p>
+
+<p>
+  <strong>Minutos:</strong>
+  <%= @call.minutos %>
+</p>
+
+<%= link_to 'Edit', edit_call_path(@call) %> |
+<%= link_to 'Back', calls_path %>

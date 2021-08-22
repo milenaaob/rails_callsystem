@@ -1,0 +1,45 @@
+<%= form_with(model: call) do |form| %>
+  <% if call.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(call.errors.count, "error") %> prohibited this call from being saved:</h2>
+
+      <ul>
+        <% call.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :origin, 'Origem' %>
+    <%= form.select :origin, collection: [['011', '011'], ['016', '016'], ['017', '017'], ['018', '018']] %>
+  </div>
+
+  <div class="field">
+    <%= form.label :destiny, 'Destino' %>
+    <%= form.select :destiny, collection: [['011', '011'], ['016', '016'], ['017', '017'], ['018', '018']] %>
+  </div>
+
+  <div class="field">
+    <%= form.label :minuts %>
+    <%= form.number_field :minuts %>
+  </div>
+
+  <div clas="field">
+    <label> Plano Utilizado:</label>
+    <%=
+    form.select :plan_id,
+    @plans_calls.map { |value| [value.name, value.id] },
+    {selected: 00},
+    class: 'ui fluid dropdown',
+    name: 'call[plans[plan_id]'
+    %>
+
+  </div>
+
+
+  <div class="actions">
+    <%= form.submit 'Enviar', class: 'ui right floated button blue large' %>
+  </div>
+<% end %>
