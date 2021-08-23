@@ -1,24 +1,15 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+* Ruby version: 2.6.8
 
-Things you may want to cover:
+* System dependencies: semantic-ui
 
-* Ruby version
+* Configuration: bundle project 
 
-* System dependencies
+* Database creation: After rails db:migrate, use rails db:seed to have plans pre saved.
 
-* Configuration
+* Database initialization: Postgresql may be used in PgAdmin4
 
-* Database creation
+* To start testing just go to calls/new or index and click in the button 'Nova Ligação'
 
-* Database initialization
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
