@@ -26,11 +26,12 @@ class CallsController < ApplicationController
   # POST /calls or /calls.json
   def create
 
-    fees = fees(params[:call][:origin].to_i, params[:call][:destiny].to_i)
-
+    fees = fees(params[:call][:origin], params[:call][:destiny])
+    puts fees
+    puts fees
+    puts fees
     valuewithplan = valuewithplan(fees, params[:call][:minuts].to_i, params[:call][:plan_id].to_i)
-    valuewithoutplan = valuewithoutplan(fees, params[:call][:minuts])
-
+    valuewithoutplan = valuewithoutplan(fees, params[:call][:minuts].to_i)
 
     @call = Call.new(
       origin: params[:call][:origin],
@@ -55,21 +56,21 @@ class CallsController < ApplicationController
 
   def fees origin, destiny
 
-    if origin == 011
-      if destiny == 016
+    if origin == '011'
+      if destiny == '016'
         fees = 1.9
       else
-        if destiny == 017
+        if destiny == '017'
           fees = 1.7
         else
           fees = 0.9
         end
       end
     else
-      if origin == 016
+      if origin == '016'
         fees = 2.9
       else
-        if origin == 017
+        if origin == '017'
           fees = 2.7
         else
           fees = 1.9

@@ -1,3 +1,7 @@
+<div class="ui middle aligned center aligned grid three columns">
+<div class="fice wide column">
+
+  <h3 class="ui header"> Digite os dados da ligação que deseja simular: </h3>
 <%= form_with model: call, local: true, html: {class: 'ui form'} do |form| %>
 
   <% if call.errors.any? %>
@@ -11,31 +15,35 @@
       </ul>
     </div>
   <% end %>
-
-  <div class="field">
+  <div class = "two fields">
+  <div class="ui field">
     <%= form.label :origin, 'Origem' %>
-    <%= form.select :origin, collection: [['011', '011'], ['016', '016'], ['017', '017'], ['018', '018']] %>
+    <%= form.select :origin, [['011', '011'], ['016', '016'], ['017', '017'], ['018', '018']] %>
   </div>
 
-  <div class="field">
+  <div class="ui field">
     <%= form.label :destiny, 'Destino' %>
-    <%= form.select :destiny, collection: [['011', '011'], ['016', '016'], ['017', '017'], ['018', '018']] %>
+    <%= form.select :destiny, [['011', '011'], ['016', '016'], ['017', '017'], ['018', '018']] %>
   </div>
+</div>
 
   <div class="field">
-    <%= form.label :minutos %>
+  <div class="ui field">
+    <%= form.label :Tempo %>
     <%= form.number_field :minuts %>
   </div>
-
-  <div clas="field">
-    <label> Plano Utilizado:</label>
-    <%= form.select :plan_id, collection: [['Nenhum', '01'], ['FaleMais30', '30'], ['FaleMais 60', '60'], ['FaleMais 120', '60']] %>
-
-
   </div>
 
+  <div class="field">
+  <div class="ui field">
+    <label> Plano Utilizado:</label>
+    <%= form.select :plan_id, [['Nenhum', '01'], ['FaleMais30', '30'], ['FaleMais 60', '60'], ['FaleMais 120', '60']] %>
+  </div>
+  </div>
 
   <div class="actions">
-    <%= form.submit 'Enviar', class: 'ui right floated button blue large' %>
+    <%= form.submit 'Enviar', class: 'ui  button positive fluid' %>
   </div>
 <% end %>
+</div>
+</div>

@@ -1,35 +1,7 @@
+<div class="ui middle aligned center aligned grid three columns">
+  <div class="fice wide column">
 
-
-
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Origem:</strong>
-  <%= @call.origin %>
-</p>
-
-<p>
-  <strong>Destino:</strong>
-  <%= @call.destiny %>
-</p>
-
-<p>
-  <strong>Minutos:</strong>
-  <%= @call.minuts %>
-</p>
-
-<p>
-  <strong>Plano:</strong>
-  <%= @plan %>
-</p>
-
-<p>
-  <strong>Valor:</strong>
-  <%= @call.value %>
-</p>
-
-
-<table>
+<table class="ui celled striped table">
   <thead>
   <tr>
     <th>Origem</th>
@@ -49,14 +21,16 @@
       <td><%= @call.destiny %></td>
       <td><%= @call.minuts %></td>
       <td> <%= @plan %></td>
-      <td><%= @call.value %></td>
-      <td><%= link_to 'Show', @call %></td>
+      <td>$ <%= @call.valuewithplan %></td>
+      <td>$ <%= @call.valuewithoutplan %></td>
       <td><%= link_to 'Edit', edit_call_path(@call) %></td>
       <td><%= link_to 'Destroy', @call, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      <td><%= link_to 'Back', calls_path %></td>
     </tr>
 
   </tbody>
 </table>
 
-<%= link_to 'Edit', edit_call_path(@call) %> |
-<%= link_to 'Back', calls_path %>
+
+  </div>
+</div>
