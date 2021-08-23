@@ -10,6 +10,6 @@
 
 * Database initialization: Postgresql may be used in PgAdmin4
 
-* To start testing just go to calls/new or index and click in the button 'Nova Ligação'
+* To start testing just go to calls/new or index and click on the button 'Nova Ligação'
 
 
