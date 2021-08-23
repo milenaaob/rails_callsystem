@@ -1,4 +1,5 @@
-<%= form_with(model: call) do |form| %>
+<%= form_with model: call, local: true, html: {class: 'ui form'} do |form| %>
+
   <% if call.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(call.errors.count, "error") %> prohibited this call from being saved:</h2>
@@ -22,19 +23,14 @@
   </div>
 
   <div class="field">
-    <%= form.label :minuts %>
+    <%= form.label :minutos %>
     <%= form.number_field :minuts %>
   </div>
 
   <div clas="field">
     <label> Plano Utilizado:</label>
-    <%=
-    form.select :plan_id,
-    @plans_calls.map { |value| [value.name, value.id] },
-    {selected: 00},
-    class: 'ui fluid dropdown',
-    name: 'call[plans[plan_id]'
-    %>
+    <%= form.select :plan_id, collection: [['Nenhum', '01'], ['FaleMais30', '30'], ['FaleMais 60', '60'], ['FaleMais 120', '60']] %>
+
 
   </div>
 

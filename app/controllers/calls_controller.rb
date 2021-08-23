@@ -9,6 +9,9 @@ class CallsController < ApplicationController
 
   # GET /calls/1 or /calls/1.json
   def show
+     id = @call.plan_id
+     @plan = Plan.find(id)
+     @plan = @plan.name
   end
 
   # GET /calls/new
@@ -25,13 +28,16 @@ class CallsController < ApplicationController
 
     fees = fees(params[:call][:origin].to_i, params[:call][:destiny].to_i)
 
-    value = value(fees, params[:call][:minuts].to_i, params[:params][:plan_id].to_i)
+    valuewithplan = valuewithplan(fees, params[:call][:minuts].to_i, params[:call][:plan_id].to_i)
+    valuewithoutplan = valuewithoutplan(fees, params[:call][:minuts])
+
 
     @call = Call.new(
       origin: params[:call][:origin],
-      destiny: params[:call][:detiny],
+      destiny: params[:call][:destiny],
       minuts: params[:call][:minuts],
-      value: value,
+      valuewithplan: valuewithplan,
+      valuewithoutplan: valuewithoutplan,
       plan_id: params[:call][:plan_id]
 
     )
@@ -73,25 +79,31 @@ class CallsController < ApplicationController
     return fees
   end
 
-  def value fees, minuts, plan
+  def valuewithplan fees, minuts, plan
     if minuts <= plan
       value = 0.00
     else
       if plan == 30
         additionals = minuts - 30
-        value = additionals * fees + (additionals * taxa)*0.10
+        value = ((additionals * fees) + ((additionals * fees)*0.10))
       else
         if plan == 60
           additionals = minuts - 60
-          value = additionals * fees + (additionals * taxa)*0.10
+          value = additionals * fees + (additionals * fees)*0.10
         else
           additionals = minuts - 120
-          value = additionals * fees + (additionals * taxa)*0.10
+          value = additionals * fees + (additionals * fees)*0.10
         end
       end
     end
     return value
 
+  end
+
+  def valuewithoutplan fees, minuts
+
+    value = fees * minuts;
+    return value
   end
 
   # PATCH/PUT /calls/1 or /calls/1.json

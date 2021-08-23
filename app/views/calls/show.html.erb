@@ -1,19 +1,62 @@
+
+
+
 <p id="notice"><%= notice %></p>
 
 <p>
   <strong>Origem:</strong>
-  <%= @call.origem %>
+  <%= @call.origin %>
 </p>
 
 <p>
   <strong>Destino:</strong>
-  <%= @call.destino %>
+  <%= @call.destiny %>
 </p>
 
 <p>
   <strong>Minutos:</strong>
-  <%= @call.minutos %>
+  <%= @call.minuts %>
 </p>
+
+<p>
+  <strong>Plano:</strong>
+  <%= @plan %>
+</p>
+
+<p>
+  <strong>Valor:</strong>
+  <%= @call.value %>
+</p>
+
+
+<table>
+  <thead>
+  <tr>
+    <th>Origem</th>
+    <th>Destino</th>
+    <th>Tempo</th>
+    <th>Plano FaleMais</th>
+    <th>Com FaleMais</th>
+    <th>Sem FaleMais</th>
+    <th colspan="6"></th>
+  </tr>
+  </thead>
+
+  <tbody>
+
+    <tr>
+      <td><%= @call.origin %></td>
+      <td><%= @call.destiny %></td>
+      <td><%= @call.minuts %></td>
+      <td> <%= @plan %></td>
+      <td><%= @call.value %></td>
+      <td><%= link_to 'Show', @call %></td>
+      <td><%= link_to 'Edit', edit_call_path(@call) %></td>
+      <td><%= link_to 'Destroy', @call, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    </tr>
+
+  </tbody>
+</table>
 
 <%= link_to 'Edit', edit_call_path(@call) %> |
 <%= link_to 'Back', calls_path %>

@@ -12,7 +12,7 @@ default: &default
 
   host: localhost
   username: postgres
-  password: postgres
+  password: loading
   database: test_call
 
 development:
